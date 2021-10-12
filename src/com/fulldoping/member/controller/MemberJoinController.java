@@ -1,4 +1,4 @@
-package controller;
+package com.fulldoping.member.controller;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Member;
-import service.face.MemberService;
-import service.impl.MemberServiceImpl;
+import com.fulldoping.member.dto.Member;
+import com.fulldoping.member.service.face.MemberService;
+import com.fulldoping.member.service.impl.MemberServiceImpl;
 
 @WebServlet("/member/join")
 public class MemberJoinController extends HttpServlet {

@@ -1,8 +1,8 @@
-package dao.face;
+package com.fulldoping.member.dao.face;
 
 import java.sql.Connection;
 
-import dto.Member;
+import com.fulldoping.member.dto.Member;
 
 public interface MemberDao {
 	
@@ -21,5 +21,13 @@ public interface MemberDao {
 	 * @return Member - 조회된 결과 객체
 	 */
 	public Member selectMemberByUserNo(Connection conn, Member member);
+	
+	/**
+	 * 회원가입정보 삽입하기
+	 * 
+	 * @param conn 
+	 * @param member - 회원가입 정보 객체
+	 */
+	public int insert(Connection conn, Member member);
 	
 }

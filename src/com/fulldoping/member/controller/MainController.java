@@ -1,4 +1,4 @@
-package controller;
+package com.fulldoping.member.controller;
 
 import java.io.IOException;
 

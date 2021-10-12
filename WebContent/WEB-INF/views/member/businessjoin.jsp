@@ -23,12 +23,11 @@ $(document).ready(function() {
 		     }   
 	})
 });
-
 </script>
 
 <style type="text/css">
 form {
-	width: 400px;
+	width: 500px;
 	margin: 0 auto;
 }
 
@@ -127,16 +126,22 @@ form {
 	</div>
 
 	<div>
+		<label for="businessNo">사업자번호</label>
+		<div>
+			<input type="text" id="businessNo" name="businessNo" />
+		</div>
+	</div>
+	
+	<div>
 		<label for="join_btn"></label>
 		<div>
 			<button type="button" id="btnJoin">가입하기</button>
 		</div>
 	</div>
 	
-	
-	
 </form>
-<!-- .container -->
+
+	<!-- .container -->
 </div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
