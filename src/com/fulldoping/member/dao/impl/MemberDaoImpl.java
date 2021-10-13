@@ -114,7 +114,7 @@ public class MemberDaoImpl implements MemberDao {
 		String sql = "";
 		sql += "INSERT INTO member "
 				+ "( userNo, userKind, userId, userPw, userName, userNick, userPh, userEm, userGen, userBirth, joinDate, businessNo)";
-		sql += " VALUES( member_seq.nextval, 1, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, NULL)";
+		sql += " VALUES( member_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, NULL)";
 		
 		int res = 0;
 		
@@ -122,17 +122,17 @@ public class MemberDaoImpl implements MemberDao {
 			//DB작업
 			ps = conn.prepareStatement(sql);
 
+			ps.setInt(1, 1);
 //			ps.setInt(1, member.getUserKind());
-			ps.setString(1, member.getUserId());
-			ps.setString(2, member.getUserPw());
-			ps.setString(3, member.getUserName());
-			ps.setString(4, member.getUserNick());
-			ps.setString(5, member.getUserPh());
-			ps.setString(6, member.getUserEm());
-			ps.setString(7, member.getUserGen());
-			ps.setString(8, member.getUserBirth());
-//			ps.setDate(10, member.getJoinDate());
-//			ps.setInt(9, member.getBusinessNo());
+			ps.setString(2, member.getUserId());
+			ps.setString(3, member.getUserPw());
+			ps.setString(4, member.getUserName());
+			ps.setString(5, member.getUserNick());
+			ps.setString(6, member.getUserPh());
+			ps.setString(7, member.getUserEm());
+			ps.setString(8, member.getUserGen());
+			ps.setString(9, member.getUserBirth());
+//			ps.setInt(10, member.getBusinessNo());
 			
 			res = ps.executeUpdate();
 	
@@ -143,5 +143,93 @@ public class MemberDaoImpl implements MemberDao {
 			JDBCTemplate.close(ps);
 		}
 		return res;
+	}
+	
+	@Override
+	public Member findUserId(Connection conn, String userName, String userEm) {
+		
+		//SQL 작성
+		String sql="";
+		sql += "SELECT * FROM member";
+		sql += " WHERE 1=1";
+		sql += "	AND userName = ? ";
+		sql += "	AND userEm = ? ";
+		
+		//결과 저장할 변수
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql); //SQL 객체 수행
+			
+			ps.setString(1, userName);
+			ps.setString(2, userEm);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserId( rs.getString("userId") );
+				result.setUserName( rs.getString("userName") );
+				result.setUserEm( rs.getString("userEm") );
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// DB객체 닫기
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		//최종 결과 반환
+		return result;
+	}
+
+	@Override
+	public Member findUserPw(Connection conn, String userId, String userName, String userEm) {
+		
+		//SQL 작성
+		String sql="";
+		sql += "SELECT * FROM member";
+		sql += " WHERE 1=1";
+		sql += "	AND userID = ? ";
+		sql += "	AND userName = ? ";
+		sql += "	AND userEm = ? ";
+		
+		//결과 저장할 변수
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql); //SQL 객체 수행
+			
+			ps.setString(1, userId);
+			ps.setString(2, userName);
+			ps.setString(3, userEm);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserId( rs.getString("userId") );
+				result.setUserPw( rs.getString("userPw") );
+				result.setUserName( rs.getString("userName") );
+				result.setUserEm( rs.getString("userEm") );
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// DB객체 닫기
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		//최종 결과 반환
+		return result;
+		
 	}
 }

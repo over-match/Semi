@@ -5,27 +5,25 @@
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<div class="container">
+<div class="wrapper">
+<section>
+	<div id="header">header</div>
+	<hr>
 
-<div class="text-center">
-
-<!-- 비로그인상태 -->
-<c:if test="${empty login or not login }">
-   <strong>로그인이 필요합니다</strong><br>
-   <button onclick='location.href="/member/login";'>로그인</button>
-   <button onclick='location.href="/member/join";'>회원가입</button>
-</c:if>
-
-<!-- 로그인상태 -->
-<c:if test="${not empty login and login }">
-   <strong>${userNick }님, 환영합니다</strong><br>
-   <button onclick='location.href="/member/mypage";'>마이페이지</button>
-   <button onclick='location.href="/member/logout";'>로그아웃</button>
-</c:if>
-
+		<article>
+			<p>Hello</p>
+ 			<p></p> 
+			<p>본문영역!</p>
+			<p>내용물을 적는 곳, 기본 컨텐츠가 들어간다</p>
+		</article>
+		
+		<article>		
+		</article>
+		
+	</section>
+<!-- .wrapper -->
 </div>
 
-<!-- .container -->
-</div>
+</body>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

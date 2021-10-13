@@ -133,8 +133,6 @@ form {
 		</div>
 	</div>
 	
-	
-	
 </form>
 <!-- .container -->
 </div>

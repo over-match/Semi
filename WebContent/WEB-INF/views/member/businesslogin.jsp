@@ -64,8 +64,8 @@ form {
 </div>
 
 <div>
-<%-- 	<label><a href="<%=request.getContextPath()%>"/>아이디찾기</a> | </label>
-	<label><a href="<%=request.getContextPath()%>"/>비밀번호 찾기</a> | </label> --%>
+<label><a href="<%=request.getContextPath()%>/member/finduserid">아이디찾기</a> | </label>
+	<label><a href="<%=request.getContextPath()%>/member/finduserpw">비밀번호 찾기</a> | </label> 
 	<label><a href="<%=request.getContextPath()%>/member/businessjoin">회원가입</a></label>
 </div>
 <div>

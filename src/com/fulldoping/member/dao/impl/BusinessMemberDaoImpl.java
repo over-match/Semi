@@ -109,8 +109,8 @@ public class BusinessMemberDaoImpl implements BusinessMemberDao {
 		//SQL 작성
 		String sql = "";
 		sql += "INSERT INTO member "
-				+ "( userNo, userKind, userId, userPw, userName, userNick, userPh, userEm, userGen, userBirth, joinDate, businessNo)";
-		sql += " VALUES( member_seq.nextval, 2, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?)";
+				+ "( userNo, userKind, userId, userPw, userName, userNick, userPh, userEm, userGen, userBirth, joinDate, businessNo )";
+		sql += " VALUES( member_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, ? )";
 		
 		int res = 0;
 		
@@ -118,15 +118,17 @@ public class BusinessMemberDaoImpl implements BusinessMemberDao {
 			//DB작업
 			ps = conn.prepareStatement(sql);
 
-			ps.setString(1, member.getUserId());
-			ps.setString(2, member.getUserPw());
-			ps.setString(3, member.getUserName());
-			ps.setString(4, member.getUserNick());
-			ps.setString(5, member.getUserPh());
-			ps.setString(6, member.getUserEm());
-			ps.setString(7, member.getUserGen());
-			ps.setString(8, member.getUserBirth());
-			ps.setInt(9, member.getBusinessNo());
+			ps.setInt(1, 2);
+//			ps.setInt(1, member.getUserKind());
+			ps.setString(2, member.getUserId());
+			ps.setString(3, member.getUserPw());
+			ps.setString(4, member.getUserName());
+			ps.setString(5, member.getUserNick());
+			ps.setString(6, member.getUserPh());
+			ps.setString(7, member.getUserEm());
+			ps.setString(8, member.getUserGen());
+			ps.setString(9, member.getUserBirth());
+			ps.setInt(10, member.getBusinessNo());
 			
 			res = ps.executeUpdate();
 	

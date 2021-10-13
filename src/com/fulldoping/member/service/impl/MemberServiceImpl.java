@@ -86,4 +86,28 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+
+	@Override
+	public Member findUserId(String userName, String userEm) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		Member member = memberDao.findUserId(conn, userName, userEm); 
+		
+		return member;
+			
+		
+		
+	}
+
+	@Override
+	public Member findUserPw(String userId, String userName, String userEm) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		Member member = memberDao.findUserPw(conn, userId, userName, userEm);
+		
+		return member;
+	}
+	
+	
+	
 }

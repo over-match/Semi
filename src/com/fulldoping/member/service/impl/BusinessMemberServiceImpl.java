@@ -37,6 +37,7 @@ public class BusinessMemberServiceImpl implements BusinessMemberService {
 		return member;
 	}
 
+	
 	@Override
 	public boolean loginBusiness(Member member) {
 		
@@ -47,12 +48,14 @@ public class BusinessMemberServiceImpl implements BusinessMemberService {
 		}	
 	}
 
+	
 	@Override
 	public Member infoBusiness(Member member) {
 		
 		return businessMemberDao.selectBusinessMemberByUserNo(JDBCTemplate.getConnection(), member);
 	}
 
+	
 	@Override
 	public Member getJoinBusinessMember(HttpServletRequest req) {
 		try {
@@ -71,11 +74,12 @@ public class BusinessMemberServiceImpl implements BusinessMemberService {
 		member.setUserPh( req.getParameter("userPh"));
 		member.setUserGen( req.getParameter("userGen"));
 		member.setUserBirth( req.getParameter("userBirth"));
-//		member.setBusinessNo( req.getParameter("businessNo"));		
+		member.setBusinessNo( Integer.parseInt(req.getParameter("businessNo")));
 		
 		return member;
 	}
 
+	
 	@Override
 	public void joinBusiness(Member member) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -86,5 +90,5 @@ public class BusinessMemberServiceImpl implements BusinessMemberService {
 			JDBCTemplate.rollback(conn);
 		}
 	}
-	
+
 }

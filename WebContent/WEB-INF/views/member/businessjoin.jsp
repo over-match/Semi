@@ -43,7 +43,7 @@ form {
 <h6 class="text-right"><span class="icon">* </span>필수입력사항</h6>
 <hr>
 
-<form action="/member/join" method="post">
+<form action="/member/businessjoin" method="post">
 
 	<div>
 		<label for="userId">아이디

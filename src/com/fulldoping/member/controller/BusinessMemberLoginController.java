@@ -46,6 +46,7 @@ public class BusinessMemberLoginController extends HttpServlet {
 	         HttpSession session = req.getSession();
 	         session.setAttribute("login", login);
 	         session.setAttribute("userNo", member.getUserNo());
+	         session.setAttribute("userKind", member.getUserKind());
 	         session.setAttribute("userNick", member.getUserNick());
 	      }
 	      
